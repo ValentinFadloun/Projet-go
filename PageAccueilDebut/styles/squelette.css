@@ -1,0 +1,33 @@
+
+#entete
+{
+	margin-right:auto;
+	margin-left:auto;
+	width:1096px;
+	text-align:center;	
+}
+
+
+
+#corps
+{
+
+	margin:auto;
+	width:1096px;
+	background-color:White;
+	
+}
+
+#corps_droit
+{	
+	text-align:justify;
+	width:70%;
+	padding-left:20px;
+	padding-right:80px;
+	float:right;
+	background-color:white;
+
+}
+
+
+
