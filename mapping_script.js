@@ -8,9 +8,10 @@ function create_map() {
     var j = 0;
 
     var cote = plateau_de_jeu.width;
+    var taille_case = cote / 18;
 
-    for (i = 0; i <= cote; i += 50) {
-        for (j = 0; j <= cote; j += 50) {
+    for (i = 0; i <= cote; i += taille_case) {
+        for (j = 0; j <= cote; j += taille_case) {
             var area = document.createElement("area");
             area.shape = "circle";
             area.coords = j + "," + i + ",10";
@@ -25,6 +26,7 @@ var couleur = "noir";
 
 function put_stone(x, y) {
 
+    var div = document.getElementById("corps_droit");
     var img_pierre = document.createElement("img");
     img_pierre.className = "imgB1";
     if (couleur == "noir") {
@@ -38,8 +40,5 @@ function put_stone(x, y) {
     }
     img_pierre.top = y;
     img_pierre.left = x;
-    alert(couleur);
-    document.appendChild(img_pierre);
-
-    return false;
+    div.appendChild(img_pierre);
 }
