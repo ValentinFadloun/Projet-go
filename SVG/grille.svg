@@ -20,6 +20,10 @@
     </style>
     
     <defs>
+			<!--<pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+			<image xlink:href="wood.jpg" x="0" y="0" width="100" height="100" />
+			</pattern>-->
+		
         <g id="gh">
             <line x1="0" y1="0" x2="900" y2="0" class="ligne"></line>
 
@@ -32,6 +36,7 @@
         </g>
 
     </defs>
+    <!--<rect x="0" y="0" width="950" height="950" fill="url(#img1)" stroke="black" stroke-width="3"></rect>-->
     <rect x="0" y="0" width="950" height="950" fill="coral" stroke="black" stroke-width="3"></rect>
     <use xlink:href="#gh" transform="translate(0 50)"></use>
     <use xlink:href="#gh" transform="translate(0 100)"></use>
