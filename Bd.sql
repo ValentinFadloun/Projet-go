@@ -1,40 +1,59 @@
+DROP TABLE CHATLOG;
+DROP TABLE COUP;
+DROP TABLE PARTIES;
+DROP TABLE JOUE;
+DROP TABLE INSCRITS;
 
-CREATE TABLE Inscrits
+CREATE TABLE INSCRITS
 (
-  idjoueur NUMBER PRIMARY KEY NOT NULL,
-  mail VARCHAR2(50) NOT NULL,
-  pseudo VARCHAR2(20) NOT NULL,
-  motdepasse VARCHAR2(40) NOT NULL,
-  partiesjouees NUMBER,
-  partiesgagnees NUMBER,
-)
+  idjoueur       int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY     (idjoueur),
+  mail           VARCHAR(50) NOT NULL,
+  pseudo         VARCHAR(20) NOT NULL UNIQUE,
+  motdepasse     VARCHAR(40) NOT NULL,
+  partiesjouees  int DEFAULT 0,
+  partiesgagnees int DEFAULT 0
+);
 
-CREATE TABLE Parties
+CREATE TABLE JOUE
 (
-  idParties NUMBER FOREIGN KEY REFERENCES Joue(idParties),
-  confidentialite ENUM ('prive','public'),
-)
+  idParties int NOT NULL,
+  JoueurB int NOT NULL,
+  JoueurN int NOT NULL,
+  PRIMARY KEY (idParties),
+  FOREIGN KEY (JoueurB) REFERENCES INSCRITS(idjoueur),
+  FOREIGN KEY (JoueurN) REFERENCES INSCRITS(idjoueur),
+  etat ENUM ('en cours', 'fini')
+);
 
-CREATE TABLE Joue
+CREATE TABLE PARTIES
 (
-  idParties NUMBER PRIMARY KEY NOT NULL,
-  JoueurB NUMBER FOREIGN KEY REFERENCES Inscrits(idjoueur),
-  JoueurN NUMBER FOREIGN KEY REFERENCES Inscrits(idjoueur),
-  etat ENUM ('en cours','fini'),
-)
+  idParties int,
+  FOREIGN KEY (idParties) REFERENCES JOUE(idParties),
+  confidentialite ENUM ('prive', 'public')
+);
 
-CREATE TABLE Coup
+CREATE TABLE COUP
 (
-  idParties NUMBER FOREIGN KEY REFERENCES Joue(idParties),
-  idjoueur NUMBER FOREIGN KEY REFERENCES Inscrits(idjoueur),
-  coordX NUMBER,
-  coordY NUMBER,
-  dateCoup DATE,
-)
+  idParties int,
+  FOREIGN KEY (idParties) REFERENCES JOUE(idParties),
+  idjoueur int,
+  FOREIGN KEY (idjoueur) REFERENCES INSCRITS(idjoueur),
+  coordX int,
+  coordY int,
+  dateCoup DATE
+);
 
-CREATE TABLE Chatlog
+CREATE TABLE CHATLOG
 (
-  idjoueur NUMBER FOREIGN KEY REFERENCES Inscrits(idjoueur),
+  idjoueur int,
+  FOREIGN KEY (idjoueur) REFERENCES INSCRITS(idjoueur),
   datemessage DATE,
-  texte VARCHAR2(300),
-)
+  texte VARCHAR(300)
+);
+
+INSERT INTO INSCRITS VALUES (0,'serge@oui.com','judas','jesus',0,0);
+INSERT INTO INSCRITS VALUES (0,'philipe@oui.com','demacia','jesus',0,0);
+INSERT INTO INSCRITS VALUES (0,'jean-Eude@oui.com','oui','jesus',0,0);
+INSERT INTO INSCRITS VALUES (0,'bertrand@oui.com','mechant','jesus',0,0);
+

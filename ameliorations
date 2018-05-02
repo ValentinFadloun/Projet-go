@@ -1,0 +1,17 @@
+Page d'inscriptions :
+    -Il faudrait que le message d'erreur lors d'une inscription s'affiche sur la page principalement
+    -sécuriser contre les injections sql, sript etc...
+    -confirmation de mot de passe ?
+    -changer le design (rapprocher le bouton valider)
+    -faire en sorte qu'on ne puisse pas entrer plusieurs fois la même adresse mail ?
+    -envoyer un email de verif ?
+
+Page connexion :
+    -sécuriser, crypter le mot de passe ?
+    -message d'erreur
+    -design (rapprocher le bouton valider)
+
+Page Accueil :
+    -petit chat scrollable , qui reste toujours visible sur l'écran
+    -bouton déconnexion
+    -Faire les Règles
