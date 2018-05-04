@@ -22,7 +22,7 @@
 					<input type="password" name="password"/>
 					<br/>
 					<br/>
-						<a href="../../PageInscription/php/insc.php">Vous n'avez pas de compte ?, inscrivez vous</a>
+						<a href="insc.php">Vous n'avez pas de compte ?, inscrivez vous</a>
 					<p class="valider">
 						<input type="submit" class="boutonValide"/>
 					</p>

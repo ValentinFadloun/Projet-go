@@ -19,14 +19,14 @@
         <head>
 
 			<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-			<link rel='stylesheet' type='text/css' href='styles/style.css' />
+			<link rel='stylesheet' type='text/css' href='../css/Accueil.css' />
 
 	</head>
 
 	<body>
 		<div id='entete'>
 
-				<img id='img_banniere' alt='banniere' src='images/Banniere.jpg'/>
+				<img id='img_banniere' alt='banniere' src='../images/Banniere.jpg'/>
 
 		</div>
 
@@ -76,10 +76,11 @@ La confrontation se termina par un résultat nul (3-3) en novembre 1945, durant 
 
 			<div id='menu'>
 <ul>
-  <li><a href="Jouer.php">Jouer</a></li>
+  <li><a href="Matchmaking.php">Jouer</a></li>
   <li><a href="Accueil.php">Histoire du go</a></li>
   <li><a href="Accueil.php">Règles</a></li>
   <li><a href="Accueil.php">Profil</a></li>
+  <li><a href="deconnexion.php">Deconnexion</a></li>
 </ul>
 
 
@@ -104,7 +105,7 @@ La confrontation se termina par un résultat nul (3-3) en novembre 1945, durant 
     }
     //L'utilisateur n'a pas pu se connecter pour une raison indeterminee
     else {
-        echo "Vous n'êtes pas connecté. <a href =\"Acceuil.php\">cliquez ici pour retourner sur la page d'accueil.</a>";
+        echo "Vous n'êtes pas connecté. <a href =\"connexion.php\">cliquez ici pour retourner sur la page de connexion.</a>";
     }
 
 ?>

@@ -82,7 +82,7 @@
                     // passe renseigné dans le formulaire de connexion est le bon
                     if($user){
                         openSession($user);
-                        header('Location: ../../PageAccueil/Accueil.php');
+                        header('Location: Accueil.php');
                     }
                 }
 

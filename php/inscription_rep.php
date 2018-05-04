@@ -43,7 +43,7 @@
            {
                 //va à la page de connexion si la requete est bonne
                 if ($conn->query($requete) == TRUE) {
-                    header('Location: ../../PageConnexion/php/log.php');
+                    header('Location: log.php');
                 } else {
                 //    echo "Error: " . $requete . "<br>" ;
                     echo "pseudo deja pris";

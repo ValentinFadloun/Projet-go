@@ -5,7 +5,7 @@
 	font-family:'Estrangelo edessa';
 	font-size:15pt;
 	color:black;
-	
+
 }
 
 #img_banniere
@@ -16,7 +16,7 @@
 }
 
 body
-{	
+{
 	width:100%;
 	background-color: #EDAE76;
 	padding:0;
@@ -27,7 +27,15 @@ body
 	margin:auto;
 	width:1096px;
 	background-color:White;
-	
+
+}
+
+#corps_droit
+{
+	width:71%;
+	padding-left:20px;
+	padding-right:20px;
+	float:right;
 }
 
 #entete
@@ -35,15 +43,13 @@ body
 	margin-right:auto;
 	margin-left:auto;
 	width:1096px;
-	text-align:center;	
+	text-align:center;
 }
 
 #clear
 {
 	clear:both;
 }
-
-
 
 ul {
     list-style-type: none;

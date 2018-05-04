@@ -1,5 +1,5 @@
 Page d'inscriptions :
-    -Il faudrait que le message d'erreur lors d'une inscription s'affiche sur la page principalement
+    -Il faudrait que le message d'erreur lors d'une inscription s'affiche sur la page principale
     -sécuriser contre les injections sql, sript etc...
     -confirmation de mot de passe ?
     -changer le design (rapprocher le bouton valider)
@@ -7,11 +7,22 @@ Page d'inscriptions :
     -envoyer un email de verif ?
 
 Page connexion :
-    -sécuriser, crypter le mot de passe ?
-    -message d'erreur
-    -design (rapprocher le bouton valider)
+    -sécuriser, crypter le mot de passe.
+    -message d'erreur approprié à l'erreur.
+    -changer le design (rapprocher le bouton valider)
 
 Page Accueil :
     -petit chat scrollable , qui reste toujours visible sur l'écran
     -bouton déconnexion
-    -Faire les Règles
+    -Ecrire les Règles
+    -Faire la page de Profil
+
+Page de Profil :
+    -afficher les statistiques du joueur.
+    -possibilité de changer le fond de couleur
+    -possibilité de changer de mot de passe.
+    -possibilité de changer d'adresse mail.
+    -message de présentation ?
+
+Page de matchmaking :
+    -Créer une partie .

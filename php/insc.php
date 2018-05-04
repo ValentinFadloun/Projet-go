@@ -26,7 +26,7 @@
 					</label>
 					<input type="password" name="password"/>
 					<br/>
-						<a href="../../PageConnexion/php/log.php">deja un compte ?, connectez vous</a>
+						<a href="log.php">deja un compte ?, connectez vous</a>
 					<p class="valider">
 						<input type="submit" class="boutonValide">
 					</p>
