@@ -39,8 +39,9 @@ body
 
 }
 
+
 #corps_droit
-{
+{	
 	text-align:justify;
 	width:71%;
 	padding-left:20px;
@@ -49,14 +50,16 @@ body
 }
 
 #menu
-{
+{	padding-top:5px;
+	padding-left:5px;
 	background:url('../images/www/fond_menu.jpg') no-repeat;
 	width:24.5%;
 	font-family:'Estrangelo edessa';
 	font-size:15pt;
 	color:black;
-
+	
 }
+
 
 #enqueue
 {
@@ -115,3 +118,39 @@ li a:hover:not(.active) {
 	scroll-behavior: auto;
 	border-width: thin;
 }
+
+h1 {
+  font-family:arial, sans-serif;
+  text-align: center;
+  color: #ee7600;
+ }
+ 
+ #wrapper, #loginform {
+    margin:75px auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:270px;
+    border:1px solid #ACD8F0; }
+  
+#loginform { padding-top:18px; }
+  
+    #loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:40px auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:370px;
+    width:230px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:205px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
