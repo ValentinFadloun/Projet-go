@@ -81,3 +81,54 @@ li a:hover:not(.active) {
     background-color: darkorange;
     color: white;
 }
+
+
+h1 {
+  font-family:arial, sans-serif;
+  text-align: center;
+  color: #ee7600;
+ }
+ 
+ #wrapper, #loginform {
+    margin:75px auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:270px;
+    border:1px solid #ACD8F0; }
+  
+#loginform { padding-top:18px; }
+  
+    #loginform p { margin: 5px; }
+  
+#chatbox {
+    text-align:left;
+    margin:40px auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:370px;
+    width:230px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:205px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+
+#enqueue
+{
+
+	margin-left:auto;
+	margin-right:auto;
+	width:1096px;
+	text-align:center;
+	color:white;
+	background-color:slategrey;
+	height:36px;
+
+
+}
