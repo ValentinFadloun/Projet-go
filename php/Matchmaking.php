@@ -95,12 +95,30 @@
 											<li><a href="Accueil.php">Profil</a></li>
 											<li><a href="deconnexion.php">Deconnexion</a></li>
 										</ul>
-										<br id='clear'/>
-								</div>
 
-        </div>
 
-        </body>
+
+
+<div id="wrapper">
+
+    <div id="chatbox"></div>
+     
+    <form action="chat_rep.php" method="post" name="message">
+        <input name="usermsg" type="text" id="usermsg" size="63" />
+        <input name="submitmsg" type="submit"  id="submitmsg" value="Envoyer" />
+    </form>
+</div>	
+
+
+
+			<br id='clear'/>
+		</div>
+		</div>
+
+		<div id='enqueue'>
+
+		</div>
+	</body>
 <?php
  $_SESSION['temps'] = time();     //actualisation de la dernière activite
  }
