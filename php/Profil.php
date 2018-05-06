@@ -43,9 +43,7 @@
 				Temps total joué:
 					<p>
 					</p>
-					<p>
-				Stats du jeu:
-					</p>
+
 				<p>
 				Victoires:
 					</p>
@@ -59,7 +57,7 @@
 				Serie de victoires:
 					</p>					
 					<p>
-				Series de defaites:
+				Serie de defaites:
 					</p>
 
 
