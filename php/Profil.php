@@ -35,7 +35,11 @@
 
 
 				<h1>Profil </h1>
-
+<h2> Informations :</h2>
+<p>Pseudo:
+</p>
+<p>Adresse mail:
+</p>
 <h2> Statistiques :</h2>
 					<p>
 				Classement:
