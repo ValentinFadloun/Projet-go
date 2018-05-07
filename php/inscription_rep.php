@@ -6,13 +6,7 @@
         $pseudo = $_POST['pseudo'];
         $password = $_POST['password'];
         $mail = $_POST['mail'];
-        //parametres de connexion à la base de données
-        $db_username = "valentin";
-        $db_password = "valentin";
-        //en private html
-        $db = "mysql:dbname=val;host=localhost";
-        //en public html
-      //  $db = "mysql:dbname=vn934281;host=172.31.21.41";
+        include 'id_connexion_bd.php';
         //requete sql pour enregistrer le nouvel inscrit
         $requete = "INSERT INTO INSCRITS VALUES (0,\"$mail\",\"$pseudo\",\"$password\",0,0);";
 

@@ -1,64 +1,62 @@
-<head>
-
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="../css/Accueil.css" />
-
-</head>
-
-<body>
-	<div id="entete">
-		<img id="img_banniere" alt="banniere" src="../images/Banniere.jpg"/>
-	</div>
-
 <?php
-
-	if (isset($_SESSION['temps']) && (time() - $_SESSION['temps'] > $inactive)) {
-		session_unset();
-		session_destroy();
-	}
-
-	$idjoueur = $_SESSION["idjoueur"];
-	//$db_username = "vn934281";
-	//$db_password = "vn934281";
-	$db_username = "valentin";
-	$db_password = "valentin";
-	//en private html
-	$db = "mysql:dbname=val;host=localhost";
-	//en public html
-	//  $db = "mysql:dbname=vn934281;host=172.31.21.41";
 
 	session_start();
 
+	$inactive = 900;    //valeur en secondes du temps avant deconnexion pour inactivite
+    ini_set('session.gc_maxlifetime', $inactive); //initialisation de gc_maxlifetime
+    //test de l'activite de l'utilisateur connecte
+    if (isset($_SESSION['temps']) && (time() - $_SESSION['temps'] > $inactive)) {
+        session_unset();
+        session_destroy();
+    }
+    //id est le nom envoye par le formulaire de connexion
+    if(isset($_GET['idjoueur'])){
+        $_SESSION['idjoueur'] = $_GET['idjoueur'];
+	}
+	
+
+	$pseudo = $_SESSION["login"];
+	include 'id_connexion_bd.php';
+    
 	try{
 		$bdd = new PDO ($db,$db_username,$db_password);
-		$req = $bdd->prepare('SELECT pseudo, mail, partiesjouees, partiesgagnees from INSCRITS WHERE idjoueur= ?');
-		$req->execute( $idjoueur );
-		$res = $req->fetchAll();
+		$req = $bdd->prepare('SELECT pseudo, mail, partiesjouees, partiesgagnees from INSCRITS WHERE pseudo= ?');
+		$req->execute( $pseudo );
+		$res = $req->fetch(PDO::FETCH_OBJ);
 	} catch(PDOException $e){
 		echo $e->getMessage();
 	}
 
-	$pute = 5;
-
     if(isset($_SESSION['idjoueur'])){ ?>
 
+		<head>
+
+			<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+			<link rel="stylesheet" type="text/css" href="../css/Accueil.css" />
+
+		</head>
+
+		<body>
+			<div id="entete">
+				<img id="img_banniere" alt="banniere" src="../images/Banniere.jpg"/>
+			</div>
 		<div id="corps">
 			<div id="corps_droit">
 				<h1>Profil: </h1>
 
-				<h2> Informations :</h2>
+				<h2> Informations : </h2>
 
-				<p>Pseudo: <?php echo res[0]; ?></p>
+				<p>Pseudo: <?php echo $res->pseudo; ?></p>
 
-				<p>Adresse mail: <?php echo res[1]; ?></p>
+				<p>Adresse mail: <?php echo $res->mail; ?></p>
 
 				<h2> Statistiques :</h2>
 
-				<p>Victoires: <?php echo res[3];?></p>
+				<p>Victoires: <?php echo $res->partiesgagnees;?></p>
 
-				<p>Defaites: <?php echo res[2] - res[3];?></p>
+				<p>Defaites: <?php echo $res->partiesjouees - $res->partiesgagnees;?></p>
 
-				<p>Total: <?php echo res[2];?></p>
+				<p>Total: <?php echo $res->partiesjouees;?></p>
 				</br></br>
 				<form action="password_change.php" method="post" name="mdp_change">
 					<h2><label>Changer de mot de passe:</label></h2></br>
@@ -103,18 +101,7 @@
 		<div id="enqueue">
 
 		</div>
-	</body>
-	<?php }
-	
-	else{ ?>
-	
-		<div id="corps">
-			<div id="corps_droit"> 
 
-			</div>
-		</div>
-	</body>
-	
 	<?php }else {?>
-		 <p> Vous n'êtes pas connecté. <a href ="Acceuil.php">cliquez ici pour retourner sur la page d'accueil.</a></p>;
+		 <p> Vous n'êtes pas connecté. <a href ="log.php">cliquez ici pour retourner sur la page d'accueil.</a></p>;
  <?php } ?>

@@ -38,20 +38,17 @@
                   <!-- manque l'action du form -->
 
 										<legend><h2>Creation de la partie</h2></legend>
-                    <form id = "creer" action="" method="post">
+                    <form action="Matchmaking_rep.php" method="post">
 
                           <br/>
                           <label for"nomPartie">Nom de la partie : </label>
-                          <input type="text" id="nomPartie">
+                          <input type="text" name="nomPartie">
                           <br/><br/>
                           <input type="radio" id="public" name="confidentialite">
                           <label for="public">Public</label>
                           <br/>
                           <input type="radio" id="prive" name="confidentialite">
                           <label for="public">Privé</label>
-                          <br/>
-                          <input type="radio" id="protege" name="confidentialite">
-                          <label for="public">Protégé</label>
                           <br/>
                           <p>Choix de la couleur des pions</p>
                           <input type="radio" id="pionAleatoire" name="choixPion">

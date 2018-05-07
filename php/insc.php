@@ -19,7 +19,7 @@
 					<label for="mail">
 						Mail :
 					</label>
-					<input type="text" name="mail"/>
+					<input type="email" name="mail"/>
 					<br/>
 					<label for="password">
 						Mot de passe :

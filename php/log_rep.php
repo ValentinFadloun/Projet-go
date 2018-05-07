@@ -2,14 +2,7 @@
     <?php
 
         $mail = $_POST['mail'];
-        //$db_username = "vn934281";
-        //$db_password = "vn934281";
-        $db_username = "valentin";
-        $db_password = "valentin";
-        //en private html
-        $db = "mysql:dbname=val;host=localhost";
-        //en public html
-      //  $db = "mysql:dbname=vn934281;host=172.31.21.41";
+        include 'id_connexion_bd.php';
 
                 session_start();
                 try{

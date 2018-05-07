@@ -134,7 +134,7 @@ Selon Franco Pratesi19, les premières descriptions du jeu étaient cependant tr
     }
     //L'utilisateur n'a pas pu se connecter pour une raison indeterminee
     else {
-        echo "Vous n'êtes pas connecté. <a href =\"connexion.php\">cliquez ici pour retourner sur la page de connexion.</a>";
+        echo "Vous n'êtes pas connecté. <a href =\"log.php\">cliquez ici pour retourner sur la page de connexion.</a>";
     }
 
 ?>
