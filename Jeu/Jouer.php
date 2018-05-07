@@ -8,65 +8,56 @@
         session_unset();
         session_destroy();
     }
-    //id est le nom envoye par le formulaire de connexion
-    if(isset($_GET['idjoueur'])){
-        $_SESSION['idjoueur'] = $_GET['idjoueur'];
-    }
     if(isset($_SESSION['idjoueur'])){
-
-        //Affichage normal de la page.
         ?>
 
 
-<head>
+		<head>
 
-	<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-	<script src="mapping_script.js"></script>
-	<link rel='stylesheet' type='text/css' href='styles/style.css' />
+			<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+			<script src="mapping_script.js"></script>
+			<link rel='stylesheet' type='text/css' href='styles/style.css' />
 
-</head>
+		</head>
 
-<body onload="create_map()">
-	<div id='entete'>
+		<body onload="create_map()">
+			<div id='entete'>
 
-		<img id='img_banniere' alt='banniere' src='images/Banniere.jpg' />
+				<img id='img_banniere' alt='banniere' src='../images/Banniere.jpg' />
 
-	</div>
+			</div>
 
-	<div id='corps'>
-		<div id='corps_droit'>
+			<div id='corps'>
+				<div id='corps_droit'>
+					<img class="imgA1" id="goban" src="SVG/grille.svg" alt="goban" usemap="#plateau"/>	
+					<map name="plateau"/>
 
-
-			<img class="imgA1" id="goban" src="SVG/grille.svg" alt="goban" usemap="#plateau">
-
-			<map name="plateau">
-
-        </map>
+				</map>
 
 
-		</div>
+				</div>
 
 
-		<div id='menu'>
-			<ul>
-				<li><a href="Jouer.php">Jouer</a></li>
-				<li><a href="Acceuil.php">Histoire du go</a></li>
-				<li><a href="Acceuil.php">Règles</a></li>
-				<li><a href="Acceuil.php">Profil</a></li>
-			</ul>
+				<div id='menu'>
+					<ul>
+						<li><a href="Jouer.php">Jouer</a></li>
+						<li><a href="Acceuil.php">Histoire du go</a></li>
+						<li><a href="Acceuil.php">Règles</a></li>
+						<li><a href="Acceuil.php">Profil</a></li>
+					</ul>
 
 
 
 
-			<br id='clear' />
-		</div>
+					<br id='clear' />
+				</div>
 
-		<div id='enqueue'>
-			<?php print_r($_SESSION) ?>
-		</div>
+				<div id='enqueue'>
+					<?php print_r($_SESSION) ?>
+				</div>
 
-		<script src="mapping_script.js"></script>
-</body>
+				<script src="mapping_script.js"></script>
+		</body>
 
 <?php
  $_SESSION['temps'] = time();     //actualisation de la dernière activite

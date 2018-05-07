@@ -1,112 +1,120 @@
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../css/Accueil.css" />
+
+</head>
+
+<body>
+	<div id="entete">
+		<img id="img_banniere" alt="banniere" src="../images/Banniere.jpg"/>
+	</div>
+
 <?php
 
-    $inactive = 900;    //valeur en secondes du temps avant deconnexion pour inactivite
-    ini_set('session.gc_maxlifetime', $inactive); //initialisation de gc_maxlifetime
-    session_start();    //demarage de la session
-    //test de l'activite de l'utilisateur connecte
-    if (isset($_SESSION['temps']) && (time() - $_SESSION['temps'] > $inactive)) {
-        session_unset();
-        session_destroy();
-    }
-    //id est le nom envoye par le formulaire de connexion
-    if(isset($_GET['idjoueur'])){
-        $_SESSION['idjoueur'] = $_GET['idjoueur'];
-    }
-    if(isset($_SESSION['idjoueur'])){
+	if (isset($_SESSION['temps']) && (time() - $_SESSION['temps'] > $inactive)) {
+		session_unset();
+		session_destroy();
+	}
 
-        //Affichage normal de la page.
-        ?>
-        <head>
+	$idjoueur = $_SESSION["idjoueur"];
+	//$db_username = "vn934281";
+	//$db_password = "vn934281";
+	$db_username = "valentin";
+	$db_password = "valentin";
+	//en private html
+	$db = "mysql:dbname=val;host=localhost";
+	//en public html
+	//  $db = "mysql:dbname=vn934281;host=172.31.21.41";
 
-			<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-			<link rel='stylesheet' type='text/css' href='../css/Accueil.css' />
+	session_start();
 
-	</head>
+	try{
+		$bdd = new PDO ($db,$db_username,$db_password);
+		$req = $bdd->prepare('SELECT pseudo, mail, partiesjouees, partiesgagnees from INSCRITS WHERE idjoueur= ?');
+		$req->execute( $idjoueur );
+		$res = $req->fetchAll();
+	} catch(PDOException $e){
+		echo $e->getMessage();
+	}
 
-	<body>
-		<div id='entete'>
+	$pute = 5;
 
-				<img id='img_banniere' alt='banniere' src='../images/Banniere.jpg'/>
+    if(isset($_SESSION['idjoueur'])){ ?>
 
-		</div>
+		<div id="corps">
+			<div id="corps_droit">
+				<h1>Profil: </h1>
 
-		<div id='corps'>
-						<div id='corps_droit'>
+				<h2> Informations :</h2>
 
+				<p>Pseudo: <?php echo res[0]; ?></p>
 
-				<h1>Profil </h1>
-<h2> Informations :</h2>
-<p>Pseudo:
-</p>
-<p>Adresse mail:
-</p>
-<h2> Statistiques :</h2>
-					<p>
-				Classement:
-					</p
-				Temps total joué:
-					<p>
-					</p>
+				<p>Adresse mail: <?php echo res[1]; ?></p>
 
-				<p>
-				Victoires:
-					</p>
-				<p>
-				Defaites:
-					</p>
-					<p>
-				Total:
-					</p>
-					<p>
-				Serie de victoires:
-					</p>					
-					<p>
-				Serie de defaites:
-					</p>
+				<h2> Statistiques :</h2>
 
+				<p>Victoires: <?php echo res[3];?></p>
 
+				<p>Defaites: <?php echo res[2] - res[3];?></p>
+
+				<p>Total: <?php echo res[2];?></p>
+				</br></br>
+				<form action="password_change.php" method="post" name="mdp_change">
+					<h2><label>Changer de mot de passe:</label></h2></br>
+					<label>Nouveau mot de passe: </label>
+					<input name="new_pass" type="password" id="new_pass"/></br></br>
+					<label>Confirmation: </label>
+					<input name="conf_pass" type="password" id="conf_pass"/>
+					<input name="submit_pass" type="submit"  id="submit_pass" value="Envoyer" />
+				</form>
+
+				</br></br>
+				<form action="mail_change.php" method="post" name="mail_change">
+					<h2><label>Changer d'adresse mail:</label></h2></br>
+					<label>Nouveau mail: </label>
+					<input name="new_mail" type="email" id="new_mail"/></br></br>
+					<label>Confirmation: </label>
+					<input name="conf_mail" type="email" id="conf_mail"/>
+					<input name="submit_mail" type="submit"  id="submit_mail" value="Envoyer" />
+				</form>
 			</div>
 
-			<div id='menu'>
-<ul>
-  <li><a href="Matchmaking.php">Jouer</a></li>
-  <li><a href="Accueil.php">Histoire du go</a></li>
-  <li><a href="Regles.php">Règles</a></li>
-  <li><a href="Profil.php">Profil</a></li>
-  <li><a href="deconnexion.php">Deconnexion</a></li>
-</ul>
-
-
-
-
-
-<div id="wrapper">
-
-    <div id="chatbox"></div>
-     
-    <form action="chat_rep.php" method="post" name="message">
-        <input name="usermsg" type="text" id="usermsg" size="63" />
-        <input name="submitmsg" type="submit"  id="submitmsg" value="Envoyer" />
-    </form>
-</div>	
-
-
-
-			<br id='clear'/>
-		</div>
+			<div id="menu">
+				<ul>
+					<li><a href="Matchmaking.php">Jouer</a></li>
+					<li><a href="Accueil.php">Histoire du go</a></li>
+					<li><a href="Regles.php">Règles</a></li>
+					<li><a href="Profil.php">Profil</a></li>
+					<li><a href="deconnexion.php">Deconnexion</a></li>
+				</ul>
+			
+				<div id="wrapper">
+					<div id="chatbox"></div>				
+						<form action="chat_rep.php" method="post" name="message">
+							<input name="usermsg" type="text" id="usermsg" size="63" />
+							<input name="submitmsg" type="submit"  id="submitmsg" value="Envoyer" />
+						</form>
+				</div>	
+			<br/>
+			</div>
 		</div>
 
-		<div id='enqueue'>
+		<div id="enqueue">
 
 		</div>
 	</body>
+	<?php }
+	
+	else{ ?>
+	
+		<div id="corps">
+			<div id="corps_droit"> 
 
-   <?php
-    $_SESSION['temps'] = time();     //actualisation de la dernière activite
-    }
-    //L'utilisateur n'a pas pu se connecter pour une raison indeterminee
-    else {
-        echo "Vous n'êtes pas connecté. <a href =\"connexion.php\">cliquez ici pour retourner sur la page de connexion.</a>";
-    }
-
-?>
+			</div>
+		</div>
+	</body>
+	
+	<?php }else {?>
+		 <p> Vous n'êtes pas connecté. <a href ="Acceuil.php">cliquez ici pour retourner sur la page d'accueil.</a></p>;
+ <?php } ?>

@@ -33,6 +33,7 @@ function put_stone(x, y) {
         img_pierre.src = "SVG/pion_noir.svg";
         img_pierre.alt = "pierre noire";
         couleur = "blanc";
+        <?php include '../php/put_stone.php'; ?>
     } else if (couleur == "blanc") {
         img_pierre.src = "SVG/pion_blanc.svg";
         img_pierre.alt = "pierre blanche";
