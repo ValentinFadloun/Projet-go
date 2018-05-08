@@ -20,9 +20,10 @@
     
 	try{
 		$bdd = new PDO ($db,$db_username,$db_password);
-		$req = $bdd->prepare('SELECT pseudo, mail, partiesjouees, partiesgagnees from INSCRITS WHERE pseudo= ?');
-		$req->execute( $pseudo );
-		$res = $req->fetch(PDO::FETCH_OBJ);
+		$res = $bdd->query("SELECT pseudo, mail, partiesjouees, partiesgagnees from INSCRITS WHERE pseudo=". $pseudo . "' " );
+
+
+
 	} catch(PDOException $e){
 		echo $e->getMessage();
 	}
@@ -46,17 +47,17 @@
 
 				<h2> Informations : </h2>
 
-				<p>Pseudo: <?php echo $res->pseudo; ?></p>
+				<p>Pseudo: <?php echo $res['pseudo']; ?></p>
 
-				<p>Adresse mail: <?php echo $res->mail; ?></p>
+				<p>Adresse mail: <?php echo $res['mail']; ?></p>
 
 				<h2> Statistiques :</h2>
 
-				<p>Victoires: <?php echo $res->partiesgagnees;?></p>
+				<p>Victoires: <?php echo $res['partiesgagnees'];?></p>
 
-				<p>Defaites: <?php echo $res->partiesjouees - $res->partiesgagnees;?></p>
+				<p>Defaites: <?php echo $res['partiesjouees'] - $res['partiesgagnees'};?></p>
 
-				<p>Total: <?php echo $res->partiesjouees;?></p>
+				<p>Total: <?php echo $res['partiesjouees']?></p>
 				</br></br>
 				<form action="password_change.php" method="post" name="mdp_change">
 					<h2><label>Changer de mot de passe:</label></h2></br>
