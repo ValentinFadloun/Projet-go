@@ -22,24 +22,67 @@ function create_map() {
     }
 }
 
+function creerInstance(){
+    if(window.XMLHttpRequest){
+      // Firefox, Opera, Google Chrome
+      return new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+      / Internet Explorer /
+      var names = [
+        "Msxml2.XMLHTTP.6.0",
+        "Msxml2.XMLHTTP.3.0",
+        "Msxml2.XMLHTTP",
+        "Microsoft.XMLHTTP"
+      ];
+      for(var i in names){
+        / On test les différentes versions /
+        try{ return new ActiveXObject(names[i]); }
+        catch(e){}
+      }
+      alert("Non supporte");
+      return null; // non supporté
+    }
+  };
+
+  function envoyerDonnees (x, y){
+    var req =  creerInstance();
+
+    var conf = "x=" + x + "y=" + y;
+
+    req.onreadystatechange = function(){
+    / Si l'état = terminé /
+        if(req.readyState == 4){
+            / Si le statut = OK /
+            if(req.status == 200){
+            / On affiche la réponse /
+            alert(req.responseText);
+            }else{
+            alert("Error: returned status code " + req.status + " " + req.statusText);
+            }
+        }
+    }
+
+    req.open("POST", "../Jeu/put_stone.php", true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    /* Pour la commande POST les données sont mises dans le corps du message
+        et donc passées en argument dans la fonction send */
+    req.send(conf);
+  }
+
 var couleur = "noir";
 
 function put_stone(x, y) {
 
     var div = document.getElementById("corps_droit");
     var img_pierre = document.createElement("img");
+
     img_pierre.className = "imgB1";
-    if (couleur == "noir") {
-        img_pierre.src = "SVG/pion_noir.svg";
-        img_pierre.alt = "pierre noire";
-        couleur = "blanc";
-        <?php include '../php/put_stone.php'; ?>
-    } else if (couleur == "blanc") {
-        img_pierre.src = "SVG/pion_blanc.svg";
-        img_pierre.alt = "pierre blanche";
-        couleur = "noir";
-    }
+    img_pierre.src = "SVG/pion_noir.svg";
+    img_pierre.alt = "pierre noire";
     img_pierre.top = y;
     img_pierre.left = x;
+    
     div.appendChild(img_pierre);
+
+    envoyerDonnees(x, y);
 }
