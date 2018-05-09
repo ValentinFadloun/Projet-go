@@ -2,7 +2,7 @@
 <?php
   session_start();
   print_r($_SESSION);
-  $mess = $_POST["message"];
+  $mess = htmlspecialchars($_POST["message"]);
 //  echo  $mess;
  header('Location: Acceuil.php');
  ?>

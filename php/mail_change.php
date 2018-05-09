@@ -39,7 +39,7 @@
                     $_POST['new_mail'] === $_POST['conf_mail'] ) 
 
                 ){
-                    $newMail = $_POST['new_mail'];
+                    $newMail = htmlspecialchars($_POST['new_mail']);
 
                     // on exécute la fonction connexion
                     try

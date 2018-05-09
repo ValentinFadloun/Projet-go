@@ -3,9 +3,9 @@
         //booleen qui sert pour les verifs
         $ok= true;
         //recuperation des donnees dans des variables
-        $pseudo = $_POST['pseudo'];
-        $password = $_POST['password'];
-        $mail = $_POST['mail'];
+        $pseudo = htmlspecialchars($_POST['pseudo']);
+        $password = htmlspecialchars($_POST['password']);
+        $mail = htmlspecialchars($_POST['mail']);
         include 'id_connexion_bd.php';
         //requete sql pour enregistrer le nouvel inscrit
         $requete = "INSERT INTO INSCRITS VALUES (0,\"$mail\",\"$pseudo\",\"$password\",0,0);";

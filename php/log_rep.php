@@ -1,7 +1,6 @@
 <html>
     <?php
 
-        $mail = $_POST['mail'];
         include 'id_connexion_bd.php';
 
                 session_start();
@@ -58,8 +57,8 @@
                     ( isset($_POST['password']) && !empty($_POST['password']) )
 
                 ){
-                    $login = $_POST['pseudo'];
-                    $pass = $_POST['password'];
+                    $login = htmlspecialchars($_POST['pseudo']);
+                    $pass = htmlspecialchars($_POST['password']);
 
                     // on exécute la fonction connection
                     try

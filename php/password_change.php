@@ -40,7 +40,7 @@
                     $_POST['new_pass'] === $_POST['conf_pass'] ) 
 
                 ){
-                    $newPass = $_POST['new_pass'];
+                    $newPass = htmlspecialchars($_POST['new_pass']);
 
                     // on exécute la fonction connexion
                     try
